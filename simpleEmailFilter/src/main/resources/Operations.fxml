@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<?import javafx.scene.control.TreeView?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.ChoiceBox?>
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="controllers.OperationsController">
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="446.0" prefWidth="800.0" VBox.vgrow="ALWAYS">
+        <TabPane layoutX="13.0" layoutY="9.0" prefHeight="355.0" prefWidth="614.0" tabClosingPolicy="UNAVAILABLE">
+            <Tab text="Create and Delete">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                    <Label layoutX="435.0" layoutY="173.0" text="Email filter id"/>
+                    <TextField fx:id="emailFilterIdToDelete" layoutX="485.0" layoutY="193.0"
+                               prefHeight="26.0"
+                               prefWidth="49.0"/>
+                    <Button fx:id="deleteEmailFilter" layoutX="435.0" layoutY="194.0"
+                            mnemonicParsing="false" text="Delete"/>
+                    <Label layoutX="435.0" layoutY="75.0" text="Email filter name"/>
+                    <Button fx:id="createEmailFilter" layoutX="435.0" layoutY="124.0"
+                            mnemonicParsing="false" text="Create"/>
+                    <TextField fx:id="emailFilterName" layoutX="435.0" layoutY="96.0"/>
+                    <Label layoutX="12.0" layoutY="75.0" text="Add saving stategy to filter"/>
+                    <TableView fx:id="availableSavingStrategies" layoutX="178.0" layoutY="101.0"
+                               prefHeight="200.0" prefWidth="235.0">
+                        <columns>
+                            <TableColumn prefWidth="28.800003051757812" text="id"/>
+                            <TableColumn prefWidth="124.0" text="pattern"/>
+                            <TableColumn prefWidth="81.5999755859375" text="Saving by"/>
+                        </columns>
+                    </TableView>
+                    <Label layoutX="178.0" layoutY="75.0" text="Available saving strategies"/>
+                    <Button fx:id="refreshStrategies" layoutX="329.0" layoutY="70.0"
+                            mnemonicParsing="false" prefHeight="26.0" prefWidth="84.0" text="Refresh"/>
+                    <TextField fx:id="emailFilterIdAddSavingStrategy" layoutX="89.0" layoutY="104.0"
+                               prefHeight="26.0" prefWidth="65.0"/>
+                    <Label layoutX="14.0" layoutY="108.0" text="Email filter id"/>
+                    <Label layoutX="14.0" layoutY="136.0" text="Saving strategy id"/>
+                    <TextField fx:id="savingStrategyId" layoutX="112.0" layoutY="131.0"
+                               prefHeight="26.0" prefWidth="43.0"/>
+                    <Button fx:id="addSavingStrategyTofilter" layoutX="14.0" layoutY="160.0"
+                            mnemonicParsing="false" prefHeight="26.0" prefWidth="141.0"
+                            text="Add saving strategy"/>
+                </AnchorPane>
+            </Tab>
+            <Tab text="Add email to filter">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                    <TableView fx:id="availableEmails" layoutX="281.0" layoutY="63.0" prefHeight="200.0"
+                               prefWidth="337.0">
+                        <columns>
+                            <TableColumn prefWidth="36.00006103515625" text="id"/>
+                            <TableColumn prefWidth="220.7999267578125" text="email"/>
+                            <TableColumn prefWidth="75.20001220703125" text="host"/>
+                        </columns>
+                    </TableView>
+                    <Label layoutX="407.0" layoutY="5.0" text="Your emails"/>
+                    <Button fx:id="loadEmails" layoutX="410.0" layoutY="31.0" mnemonicParsing="false"
+                            text="Refresh"/>
+                    <TextField fx:id="filterId" layoutX="122.0" layoutY="63.0"/>
+                    <TextField fx:id="filteredEmailId" layoutX="122.0" layoutY="125.0"/>
+                    <Label layoutX="122.0" layoutY="107.0" text="Filtered email id"/>
+                    <Label layoutX="122.0" layoutY="48.0" text="Filter id"/>
+                    <Button fx:id="addEmailToFilter" layoutX="123.0" layoutY="163.0"
+                            mnemonicParsing="false" prefHeight="26.0" prefWidth="149.0" text="Add"/>
+                </AnchorPane>
+            </Tab>
+            <Tab text="Email Filters">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                    <Button fx:id="loadFilters" layoutX="534.0" layoutY="10.0" mnemonicParsing="false"
+                            prefHeight="26.0" prefWidth="71.0" text="Refresh"/>
+                    <TreeView fx:id="emailFilters" layoutX="27.0" layoutY="10.0" prefHeight="306.0"
+                              prefWidth="507.0"/>
+                </AnchorPane>
+            </Tab>
+            <Tab text="Email Filters">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                    <Label layoutX="266.0" layoutY="14.0" text="Add new email"/>
+                    <TextField fx:id="email" layoutX="235.0" layoutY="62.0"/>
+                    <Label layoutX="295.0" layoutY="44.0" text="Email"/>
+                    <Label layoutX="284.0" layoutY="88.0" text="Password"/>
+                    <Label layoutX="294.0" layoutY="132.0" text="Host"/>
+                    <TextField fx:id="host" layoutX="234.0" layoutY="150.0"/>
+                    <Button fx:id="addEmailBtn" layoutX="234.0" layoutY="196.0" mnemonicParsing="false"
+                            prefHeight="26.0" prefWidth="150.0" text="Button"/>
+                    <PasswordField fx:id="password" layoutX="236.0" layoutY="106.0"/>
+                </AnchorPane>
+            </Tab>
+            <Tab text="Saving strategy">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                    <TextField layoutX="230.0" layoutY="116.0" fx:id="svaingStrategyPattern"/>
+                    <Label layoutX="281.0" layoutY="89.0" prefHeight="17.0" prefWidth="38.0"
+                           text="Pattern"/>
+                    <ChoiceBox layoutX="230.0" layoutY="187.0" prefWidth="150.0" fx:id="choiceBox"/>
+                    <Label layoutX="265.0" layoutY="160.0" text="filter emails by:"/>
+                    <Button layoutX="230.0" layoutY="224.0" mnemonicParsing="false" prefHeight="26.0"
+                            prefWidth="150.0" text="Save" fx:id="saveButton"/>
+                </AnchorPane>
+            </Tab>
+            <Tab text="Saved massages">
+                <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+                            prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18"
+                            xmlns:fx="http://javafx.com/fxml/1">
+                    <Label layoutX="197.0" layoutY="9.0" prefHeight="30.0" prefWidth="102.0" text="Saved messages" />
+                    <TableView layoutX="38.0" layoutY="37.0" prefHeight="358.0" prefWidth="524.0" fx:id="savedMessagesTable">
+                        <columns>
+                            <TableColumn prefWidth="64.79998779296875" text="id" />
+                            <TableColumn prefWidth="173.59998321533203" text="author" />
+                            <TableColumn prefWidth="87.20001220703125" text="title" />
+                            <TableColumn prefWidth="88.80010986328125" text="sent date" />
+                            <TableColumn prefWidth="107.19998168945312" text="attachments" />
+                        </columns>
+                    </TableView>
+                    <Button layoutX="300.0" layoutY="9.0" minHeight="20.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="82.0" text="load saved" fx:id="loadSavedMessagesBtn"/>
+                    <Button layoutX="400.0" layoutY="9.0" minHeight="20.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="82.0" text="dynamic load" fx:id="dynamicLoadSavedMessagesBtn"/>
+                    <Button layoutX="50" layoutY="9.0" minHeight="20" mnemonicParsing="false" prefHeight="25.0" prefWidth="82.0" text="remove all" fx:id="removeAll" />
+                    <Button layoutX="140" layoutY="9.0" minHeight="20" mnemonicParsing="false" prefHeight="25.0" prefWidth="82.0" text="stop thread" fx:id="stopLoading" />
+                </AnchorPane>
+            </Tab>
+        </TabPane>
+    </AnchorPane>
+</VBox>

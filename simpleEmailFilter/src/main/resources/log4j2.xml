@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <Appenders>
+        <Console name="ConsoleAppender" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss} [%t] %msg %n" />
+        </Console>
+        <File name="HibernateUtilFileAppender"
+              fileName="logs/hibernateUtils.json"
+              fileAppend="true"
+              immediateFlush="true">
+            <JSONLayout complete="true" eventEol="true" stackTraceAsString="false"/>
+        </File>
+        <RollingFile name="MessageSavedFileFileAppender"
+                filePattern="logs/savingmessages/success/messageSaved-%d{dd-MMM-hh-mm}.%i.json.gz"
+                fileAppend="true"
+                immediateFlush="true"
+                ignoreExceptions="false">
+            <JSONLayout complete="true" eventEol="true" stackTraceAsString="false"/>
+            <Policies>
+                <SizeBasedTriggerPolicy size="10KB">
+
+                </SizeBasedTriggerPolicy>
+            </Policies>
+        </RollingFile>
+        <File name="BotLoggerAppender"
+                fileAppend="false"
+                fileName="logs/bot/booperations.json"
+        >
+            <JSONLayout complete="true" eventEol="true" stackTraceAsString="false">
+
+            </JSONLayout>
+        </File>
+        <RollingFile name="MessageSavedServiceAppender"
+                     filePattern="logs/saving_messages/error-%d{dd-MMM-hh-mm}.%i.json.gz"
+                     fileAppend="true"
+                     immediateFlush="true"
+                     ignoreExceptions="false">
+            <JSONLayout complete="true" eventEol="true" stackTraceAsString="false" />
+            <Policies>
+                <SizeBasedTriggerPolicy size="10KB">
+
+                </SizeBasedTriggerPolicy>
+            </Policies>
+        </RollingFile>
+        <Console name="HomeAppender" target="SYSTEM_OUT">
+            <PatternLayout pattern="%highlight{%msg%n}{ERROR=red, INFO=blue, WARN=yellow}"/>
+        </Console>
+        <File name="AbstractRepositoryAppender"
+              fileAppend="true"
+              fileName="logs/abstractrepoLog.json"
+            >
+            <JSONLayout complete="true" eventEol="true" stackTraceAsString="false"/>
+        </File>
+    </Appenders>
+    <Loggers>
+        <Root level="INFO">
+            <AppenderRef ref="ConsoleAppender">
+
+            </AppenderRef>
+        </Root>
+        <Logger level="INFO" name="BotOperationsLogger">
+            <AppenderRef ref="BotLoggerAppender" />
+        </Logger>
+        <Logger name="HibernateUtils" level="ERROR">
+            <AppenderRef ref="HibernateUtilFileAppender" />
+        </Logger>
+        <Logger name="MessageSavedRepository" leve="INFO">
+            <AppenderRef ref="MessageSavedFileFileAppender" />
+        </Logger>
+        <Logger name="MessageSavedService"  level="ERROR">
+            <AppenderRef ref="MessageSavedServiceAppender" />
+        </Logger>
+        <Logger name="Home" level="INFO">
+            <AppenderRef ref="HomeAppender" />
+        </Logger>
+        <Logger name="AbstractRepositoryLogger" level="INFO">
+            <AppenderRef ref="AbstractRepositoryAppender" />
+        </Logger>
+    </Loggers>
+</Configuration>
